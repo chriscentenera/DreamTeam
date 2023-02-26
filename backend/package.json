@@ -1,0 +1,14 @@
+{
+  "name": "dreamteam-backend",
+  "version": "1.0.0",
+  "description": "The backend for the dreamteam application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "WestCheese",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
