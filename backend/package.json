@@ -4,11 +4,15 @@
   "description": "The backend for the dreamteam application",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --exec node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "WestCheese",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
