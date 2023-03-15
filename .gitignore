@@ -1,7 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,react
+### Vscode ###
+.vscode
 
 ### Node ###
+
+# Package lock
+package-lock.json
+
 # Logs
 logs
 *.log

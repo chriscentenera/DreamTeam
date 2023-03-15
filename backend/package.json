@@ -1,18 +1,21 @@
 {
-  "name": "dreamteam-backend",
-  "version": "1.0.0",
-  "description": "The backend for the dreamteam application",
-  "main": "index.js",
-  "scripts": {
-    "start": "nodemon --exec node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "WestCheese",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.21"
-  }
+    "name": "dreamteam-backend",
+    "version": "1.0.0",
+    "description": "The backend for the dreamteam application",
+    "scripts": {
+        "start": "nodemon ./bin/www",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "WestCheese",
+    "license": "ISC",
+    "dependencies": {
+        "cookie-parser": "^1.4.6",
+        "debug": "~2.6.9",
+        "express": "^4.18.2",
+        "http-errors": "~1.6.3",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.21"
+    }
 }

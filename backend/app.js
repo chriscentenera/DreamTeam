@@ -1,28 +1,44 @@
-const express = require('express')
-const app = express()
-const port = 3030
+var createError = require('http-errors');
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 
+var indexRouter = require('./routes/index');
+var playersRouter = require('./routes/players');
+var usersRouter = require('./routes/users');
+
+var app = express();
+
+// band-aid solution for CORS
 app.use((req, res, next) => {
-  res.append('Access-Control-Allow-Origin', ['*']);
-  next();
+    res.append('Access-Control-Allow-Origin', ['*']);
+    next();
 });
 
-app.get('/', (req, res) => {
-  res.send('Home page')
-})
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public'))); 
 
-app.get('/api/players', (req, res) => {
+app.use('/', indexRouter);
+app.use('/players', playersRouter);
+app.use('/users', usersRouter);
 
-    const data = {
-        "name": "Elias Pettersson",
-        "position": "Forward",
-        "number": "40"
-    };
-
-  res.setHeader('Content-Type', 'application/json');
-  res.json(data);
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+    next(createError(404));
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+// error handler
+app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+    res.status(err.status || 500);
+    res.send('error');
+});
+
+module.exports = app;
