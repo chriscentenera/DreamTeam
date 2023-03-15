@@ -1,7 +1,13 @@
 # Created by https://www.toptal.com/developers/gitignore/api/node,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=node,react
+### Vscode ###
+.vscode
 
 ### Node ###
+
+# Package lock
+package-lock.json
+
 # Logs
 logs
 *.log
@@ -124,7 +130,6 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
-.vscode
 
 # yarn v2
 .yarn/cache
