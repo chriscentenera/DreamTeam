@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react';
+import { Player } from './components/Player';
+
+function getData(endpoint, setState) {
+    fetch(endpoint)
+        .then(res => res.json())
+        .then(data => setState(data))
+        .catch(err => console.error(err));
+}
 
 function App() {
-  const [data, setData] = useState({});
+    const testplayername = 'Elias Pettersson'.replace(/ /g,'%20');
+    const [player, setPlayer] = useState([]);
+    const [allPlayers, setAllPlayers] = useState([]);
+    
+    useEffect(() => getData('http://localhost:3030/players/'+testplayername, setPlayer), [testplayername]);
+    useEffect(() => getData('http://localhost:3030/players', setAllPlayers), []);
 
-  useEffect(() => {
-    fetch('http://localhost:3030/players')
-      .then(res => res.json())
-      .then(data => {
-        setData(data);
-        console.log('Data set:', data);
-      })
-      .catch(err => console.error(err));
-  }, []);
+    const listItems = allPlayers.map(player =>
+        <Player key={player._id} player={player}/>
+    )
 
-  //Display data to screen
-  return (
-    <div>
-      <h2>{data.name}</h2>
-      <p>{data.position}</p>
-      <p>{data.number}</p>
-    </div>
-  );
+    return (
+        <div>
+            <h1>Select Player: {player.name}</h1>
+            <ul><Player player={player}/></ul>
+
+            <h1>All Hockey Players In Endpoint</h1>
+            <ul>{listItems}</ul>
+        </div>
+    );
 }
 
 export default App;

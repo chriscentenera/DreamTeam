@@ -1,0 +1,61 @@
+{
+    "players": [
+        {
+            "_id": "1",
+            "name": "Elias Pettersson",
+            "number": "40",
+            "position": "Center",
+            "age": "24",
+            "team": "Canucks",
+            "image": "https://th.bing.com/th?id=OSB.1UJNeEhuirc160SZqcVmLQ--.png"
+        },
+        {
+            "_id": "2",
+            "name": "Sheldon Dries",
+            "number": "15",
+            "position": "Center",
+            "age": "28",
+            "team": "Canucks",
+            "image": "https://th.bing.com/th?id=OSB.ziXx9hUFVl%7ce81zfZcUNVQ--.png"
+        },
+        {
+            "_id": "3",
+            "name": "Tyler Myers",
+            "number": "57",
+            "position": "Defense",
+            "age": "33",
+            "team": "Canucks",
+            "image": "https://th.bing.com/th?id=OSB.MCjyLg6LCT0jMsJZDI86Tg--.png"
+        },
+        {
+            "_id": "4",
+            "name": "Oliver Ekman-Larsson",
+            "number": "23",
+            "position": "Defense",
+            "age": "31",
+            "team": "Canucks",
+            "image": "https://th.bing.com/th?id=OSB.B4nDUz%7cdON6xwVXVu2FaQg--.png"
+        },
+        {
+            "_id": "5",
+            "name": "Thatcher Demko",
+            "number": "35",
+            "position": "Doalie",
+            "age": "27",
+            "team": "Canucks",
+            "image": "https://th.bing.com/th?id=OSB.tCnU_7f9Tdut6CUVHA1Gkw--.png"
+        }
+    ],
+    "teams": [
+        {
+            "name": "Canucks",
+            "players": [
+                "Elias Pettersson",
+                "Sheldon Dries",
+                "Tyler Myers",
+                "Oliver Ekman-Larsson",
+                "Thatcher Demko"
+            ]
+        }
+    ]
+}
