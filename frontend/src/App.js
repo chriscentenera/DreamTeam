@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Player } from './components/Player';
 
-
 function getData(endpoint, setState) {
     fetch(endpoint)
         .then(res => res.json())

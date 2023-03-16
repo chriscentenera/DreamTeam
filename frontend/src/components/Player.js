@@ -1,4 +1,3 @@
-// import Player from '../App.js'
 const Player = ({ player }) => {
     const listItems = 
         <li>

@@ -9,11 +9,12 @@ var playersRouter = require('./routes/players');
 var teamsRouter = require('./routes/teams');
 var usersRouter = require('./routes/users');
 
-var mongoDB = {"mongodb":"mango"}
+
 
 var app = express();
 
-app.set('mongodb', mongoDB)
+// var mongoDB = {"mongodb":"mango"}
+// app.set('mongodb', mongoDB)
 
 // band-aid solution for CORS
 app.use((req, res, next) => {
