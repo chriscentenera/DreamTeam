@@ -6,9 +6,14 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var playersRouter = require('./routes/players');
+var teamsRouter = require('./routes/teams');
 var usersRouter = require('./routes/users');
 
+var mongoDB = {"mongodb":"mango"}
+
 var app = express();
+
+app.set('mongodb', mongoDB)
 
 // band-aid solution for CORS
 app.use((req, res, next) => {
@@ -24,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/players', playersRouter);
+app.use('/teams', teamsRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
