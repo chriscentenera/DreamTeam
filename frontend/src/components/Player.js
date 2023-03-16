@@ -1,7 +1,7 @@
 const Player = ({ player }) => {
     const listItems = 
         <li>
-            <img src={player.image} />
+            <img alt-text={player.name} src={player.image} />
             <p>Name: {player.name}</p>
             <p>Number: {player.number}</p>
             <p>Position: {player.position}</p>

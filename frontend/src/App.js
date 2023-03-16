@@ -13,7 +13,7 @@ function App() {
     const [player, setPlayer] = useState([]);
     const [allPlayers, setAllPlayers] = useState([]);
     
-    useEffect(() => getData('http://localhost:3030/players/'+testplayername, setPlayer), []);
+    useEffect(() => getData('http://localhost:3030/players/'+testplayername, setPlayer), [testplayername]);
     useEffect(() => getData('http://localhost:3030/players', setAllPlayers), []);
 
     const listItems = allPlayers.map(player =>
