@@ -1,0 +1,28 @@
+version: '3.0'
+
+services:
+  back-players:
+    container_name: back-players
+    image: back-players
+    build:
+      context: .
+      dockerfile: ./services/players/Dockerfile
+
+  back-teams:
+    container_name: back-teams
+    image: back-teams
+    build:
+      context: .
+      dockerfile: ./services/teams/Dockerfile
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/backend.conf
+    ports:
+      - 80:80
+    depends_on:
+      - back-players
+      - back-teams
+

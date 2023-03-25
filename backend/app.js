@@ -1,20 +1,13 @@
 var createError = require('http-errors');
-var express = require('express');
 var path = require('path');
+var fs = require('fs');
+var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var playersRouter = require('./routes/players');
-var teamsRouter = require('./routes/teams');
-var usersRouter = require('./routes/users');
-
-
-
 var app = express();
-
-// var mongoDB = {"mongodb":"mango"}
-// app.set('mongodb', mongoDB)
+var routeDir = './routes'
+var logLevel = process.env.LOG_LEVEL || 'dev'
 
 // band-aid solution for CORS
 app.use((req, res, next) => {
@@ -22,16 +15,21 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(logger('dev'));
+app.use(logger(logLevel));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); 
 
-app.use('/', indexRouter);
-app.use('/players', playersRouter);
-app.use('/teams', teamsRouter);
-app.use('/users', usersRouter);
+
+if (process.env.SERVICE) {
+    loadService(app, process.env.SERVICE, routeDir)
+} else {
+    console.log('Endpoint: ALL' )
+    fs.readdirSync(routeDir).forEach(service => {
+        loadService(app, service, routeDir)
+    })
+}
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -47,5 +45,14 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.send('error');
 });
+
+function loadService(app, service, routeDir) {
+    var serviceEndpoint = '/' + service;
+    var serviceFilePath = routeDir + '/' + service + '/' + service;
+    var serviceFile = require(serviceFilePath);
+
+    console.log('Endpoint: ' + serviceEndpoint)
+    app.use(serviceEndpoint, serviceFile);
+}
 
 module.exports = app;
