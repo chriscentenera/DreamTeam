@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../db.js')
+var db = require('../../middleware/db.js')
 const collection = 'players'
+const fs = require('fs');
 
 /* GET players. */
 router.get('/', function(req, res, next) {
@@ -31,6 +32,17 @@ router.get('/stats', function(req, res, next) {
 
     res.setHeader('Content-Type', 'application/json');
     res.json(data);
+});
+
+
+router.post('/', function(req, res, next) {
+    console.log(req)
+    console.log(req.body)
+    console.log(req.file)
+    console.log(req.files)
+    // fs.writeFileSync('testfile.jpg', req.imageUpload.data);
+    res.setHeader('Content-Type', 'application/json');
+    res.json('{good:job}');
 });
 
 

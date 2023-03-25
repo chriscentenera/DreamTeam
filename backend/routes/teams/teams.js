@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var db = require('../db.js')
+var db = require('../../middleware/db.js')
 const collection = 'teams'
 
 /* GET teams. */
 router.get('/', function(req, res, next) {
-    teamName = 'canucks'
+    teamName = 'Canucks'
     res.setHeader('Content-Type', 'application/json');
     db.findById(collection, teamName).then(data => {
         res.json(data);
